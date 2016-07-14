@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="justmysiteapi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Morgan\\Documents\\Visual\ Studio\ 2015\\Projects\\MyWebPage\\API\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Morgan\\Documents\\Visual\ Studio\ 2015\\Projects\\MyWebPage\\API\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="JustMySiteDB-Web.config Connection String" description="" value="metadata=res://*/Entities.JustMySiteDB.csdl|res://*/Entities.JustMySiteDB.ssdl|res://*/Entities.JustMySiteDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=justmysite.database.windows.net;Initial Catalog=JustMySiteSQL;Persist Security Info=True;User ID=mogge182;Password=Cool1979&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Morgan\\Documents\\Visual\ Studio\ 2015\\Projects\\MyWebPage\\API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='JustMySiteDB']/@connectionString" />
+  </parameter>
+</parameters>

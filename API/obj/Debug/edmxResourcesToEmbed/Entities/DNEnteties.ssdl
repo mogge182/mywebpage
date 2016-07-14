@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MySiteDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Background">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="BackGroundAdress" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Employer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalLetter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Letter" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PictureAdress" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Backgroun__UserI__4CA06362">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Background" Type="Self.Background" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Background">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CV__PictureID__52593CB8">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="CV" Type="Self.CV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CV">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employer__Pictur__5535A963">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
+    <End Role="Employer" Type="Self.Employer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employer">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PersonalL__UserI__4F7CD00D">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PersonalLetter" Type="Self.PersonalLetter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalLetter">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MySiteDBModelStoreContainer">
+    <EntitySet Name="Background" EntityType="Self.Background" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalLetter" EntityType="Self.PersonalLetter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Backgroun__UserI__4CA06362" Association="Self.FK__Backgroun__UserI__4CA06362">
+      <End Role="User" EntitySet="User" />
+      <End Role="Background" EntitySet="Background" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CV__PictureID__52593CB8" Association="Self.FK__CV__PictureID__52593CB8">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="CV" EntitySet="CV" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employer__Pictur__5535A963" Association="Self.FK__Employer__Pictur__5535A963">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="Employer" EntitySet="Employer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PersonalL__UserI__4F7CD00D" Association="Self.FK__PersonalL__UserI__4F7CD00D">
+      <End Role="User" EntitySet="User" />
+      <End Role="PersonalLetter" EntitySet="PersonalLetter" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

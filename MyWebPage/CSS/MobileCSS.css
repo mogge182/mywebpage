@@ -1,0 +1,23 @@
+﻿section.module.user {
+    height: 655px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+@media all and (max-width: 414px) {
+
+    section.module.content {
+        display: none;
+    }
+
+    section.module.parallax {
+        display: none;
+    }
+    section.module.user p:after {
+        content: "CSS is not ready for mobiles yet..."
+    }
+    
+    
+}

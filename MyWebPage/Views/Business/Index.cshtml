@@ -1,0 +1,109 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model MyWebPage.Models.PresentModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="~/CSS/ParallaxSheet.css" rel="stylesheet" />
+    <link href="~/CSS/MobileCSS.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @if (Model != null)
+    {
+        <div>
+            <section class="module content">
+                <div class="container">
+                    <h1 style="font-size: 75px; font-weight: 700; margin-top: 2px;">Welcome @Model.Username</h1>
+                </div>
+            </section>
+
+            <section class="module user" Style="background-image: url(@Model.Background)">
+                <div class="container">
+                   
+                    <p class="h1username"></p>
+                </div>
+            </section>
+
+            <section class="module content">
+                <div class="container">
+                    <h2>Curriculum Vitae</h2>
+                </div>
+            </section>
+        </div>
+        foreach (var employer in @Model.Employer)
+        {
+            <section class="module content">
+                <div class="container">
+                   
+                   
+                    <p></p>
+                </div>
+            </section>
+            <section class="module parallax" Style="background-image: url(@employer.PictureUrl)">
+                <div class="container">
+
+                    <h1>@employer.EmployerName</h1>
+
+                    @if (employer.StartDate.Year != employer.EndDate.Year)
+                    {
+                        <h2>@employer.StartDate.Year - @employer.EndDate.Year</h2>
+                    }
+                    else
+                    {
+                        <h2>@employer.StartDate.Year</h2>
+                    }
+
+                    <p id="textDiv">@employer.Description</p>
+
+
+                </div>
+            </section>
+
+            <section class="module content">
+                <div class="container">
+                    
+                </div>
+            </section>
+        }
+    }
+    
+    
+
+
+@*<script type="text/javascript">
+    (function () {
+
+        var parallax = document.querySelectorAll(".parallax"),
+            speed = 0.1;
+
+        window.onscroll = function () {
+            [].slice.call(parallax).forEach(function (el, i) {
+
+                var windowYOffset = window.pageYOffset,
+                    elBackgrounPos = "50% " + (windowYOffset * speed) + "px";
+
+                el.style.backgroundPosition = elBackgrounPos;
+
+            });
+        };
+
+    })();
+
+</script>*@
+</body>
+
+
+</html>

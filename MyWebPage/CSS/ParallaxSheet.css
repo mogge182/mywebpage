@@ -1,0 +1,269 @@
+﻿body {
+    background-color: black;
+}
+/* ============================================================
+  PRIMARY STRUCTURE
+============================================================ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+  SECTIONS
+============================================================ */
+section.module:last-child {
+    margin-bottom: 0;
+}
+
+section.module h2 {
+    margin-bottom: 40px;
+    font-family: fantasy, serif;
+    font-size: 30px;
+}
+
+section.module p {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+    section.module p:last-child {
+        margin-bottom: 0;
+    }
+
+section.module.content {
+    padding: 100px;
+}
+
+    section.module.content h1 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        line-height: 200px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+        margin-top: 20%;
+    }
+
+section.module.contentTop {
+    padding: 60px 0;
+    margin-bottom: 300px;
+}
+
+section.module.parallax {
+    height: 655px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+    section.module.parallax h1 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        font-family: times;
+        line-height: 100px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+    }
+
+    section.module.parallax h2 {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        font-family: times;
+        line-height: 1px;
+        font-weight: 100;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+    }
+
+    section.module.parallax p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        font-family: times;
+        line-height: 1.3;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+    }
+
+
+    section.module.parallax input {
+        width: 500px;
+        max-width: 500px;
+        line-height: 2;
+        text-align: center;
+        font-size: 40px;
+        position: relative;
+        left: 20%;
+    }
+
+section.module.parallax-1 {
+    background-image: url('../Pictures/Earth 4.jpg');
+}
+
+section.module.parallax-2 {
+    background-image: url('../Pictures/861258-nice-wallpaper.jpg');
+}
+
+section.module.parallax-3 {
+    background-image: url('../Pictures/861306-nice-wallpaper.jpg');
+}
+
+section.module.parallax-4 {
+    background-image: url('../Pictures/ml.jpg');
+}
+
+section.module.parallax-5 {
+    background-image: url('../Pictures/Media Tierra.jpg');
+}
+/*////////////////////////////////////////////////////////////////////////////////////// - - - Mobile Settings - - - */
+@media all and (max-width: 414px) {
+    section.module h2 {
+        font-size: 15px;
+    }
+
+    section.module p {
+        font-size: 11px;
+    }
+
+    section.module.parallax h1 {
+        font-size: 20px;
+        line-height: 10px;
+        margin-top: 100px;
+    }
+
+    #login input {
+        font-size: 11px;
+        opacity: 0.8;
+        filter: alpha(opacity=60);
+        width: 60%;
+        height: 20%;
+        margin: 5px;
+    }
+
+    section.module.parallax.parallax-1 {
+        display: none;
+    }
+
+    section.module.parallax.parallax-2 {
+        display: none;
+    }
+
+    section.module.parallax.parallax-3 {
+        display: none;
+    }
+
+    section.module.parallax.parallax-4 {
+        display: none;
+    }
+
+    section.module.content {
+        display: none;
+    }
+    section.videoSection {
+        display: none;
+    }
+    section.module.contentTop {
+        display: none;
+    }
+    section.module.parallax-5 {
+        background-image: none;
+    }
+     section.module.parallax {
+        height: 100%
+    }
+   
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////// - - - MOBILE SETTINGS END - - - */
+
+
+@media all and (min-width: 415px) {
+    section.module h2 {
+        font-size: 20px;
+    }
+
+    section.module p {
+        font-size: 11px;
+    }
+
+    section.module.parallax h1 {
+        font-size: 25px;
+    }
+
+    section.module.content {
+        padding: 50px;
+    }
+
+    #login input {
+        opacity: 0.8;
+        filter: alpha(opacity=60);
+        max-width: 60%;
+        height: 20%;
+        font-size: 30px;
+        margin: 5px;
+    }
+}
+
+@media all and (min-width: 600px) {
+    section.module h2 {
+        font-size: 42px;
+    }
+
+    section.module p {
+        font-size: 20px;
+    }
+
+    section.module.parallax h1 {
+        font-size: 40px;
+        margin-bottom: 50px;
+    }
+
+    #login input {
+        opacity: 0.8;
+        filter: alpha(opacity=60);
+        width: 400px;
+        margin: 5px;
+    }
+}
+
+@media all and (min-width: 960px) {
+    section.module.parallax h1 {
+        font-size: 48px;
+        margin-bottom: 50px;
+    }
+
+    #login input {
+        opacity: 0.8;
+        filter: alpha(opacity=60);
+        width: 100%;
+        font-size: 45px;
+        margin: 5px;
+    }
+}
+
+/* ============================================================
+  ID
+============================================================ */
+
+/*#login {
+    position: relative;
+}
+#login input {
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+    height: 70px;
+    width: 300px;
+    margin-bottom: 10px;
+}*/
+
+
+

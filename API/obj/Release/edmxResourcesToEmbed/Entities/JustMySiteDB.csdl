@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JustMySiteSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Background">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="BackGroundAdress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Backgroun__UserI__4E88ABD4" FromRole="Background" ToRole="User" />
+  </EntityType>
+  <EntityType Name="CV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Employer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PersonalLetter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Letter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__PersonalL__UserI__5165187F" FromRole="PersonalLetter" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Background" Relationship="Self.FK__Backgroun__UserI__4E88ABD4" FromRole="User" ToRole="Background" />
+    <NavigationProperty Name="PersonalLetter" Relationship="Self.FK__PersonalL__UserI__5165187F" FromRole="User" ToRole="PersonalLetter" />
+  </EntityType>
+  <Association Name="FK__Backgroun__UserI__4E88ABD4">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Background" Type="Self.Background" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Background">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PersonalL__UserI__5165187F">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="PersonalLetter" Type="Self.PersonalLetter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PersonalLetter">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JustMySiteDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Background" EntityType="Self.Background" />
+    <EntitySet Name="CV" EntityType="Self.CV" />
+    <EntitySet Name="Employer" EntityType="Self.Employer" />
+    <EntitySet Name="PersonalLetter" EntityType="Self.PersonalLetter" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK__Backgroun__UserI__4E88ABD4" Association="Self.FK__Backgroun__UserI__4E88ABD4">
+      <End Role="User" EntitySet="User" />
+      <End Role="Background" EntitySet="Background" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PersonalL__UserI__5165187F" Association="Self.FK__PersonalL__UserI__5165187F">
+      <End Role="User" EntitySet="User" />
+      <End Role="PersonalLetter" EntitySet="PersonalLetter" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

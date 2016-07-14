@@ -1,0 +1,192 @@
+﻿@model MyWebPage.Models.LoginModel
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link href="~/CSS/IndexCSS.css" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+
+    <link href="~/ThirdParty/YTPlayer/jquery.mb.YTPlayer.css" rel="stylesheet" />
+    <script src="~/ThirdParty/YTPlayer/jquery.mb.YTPlayer.js"></script>
+    <script src="~/ThirdParty/YTPlayer/jquery.mb.YTPlayer.src.js"></script>
+
+    @*Bootstrap*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="~/CSS/ParallaxSheet.css" rel="stylesheet" />
+
+    <script src="~/Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <section class="videoSection" id="top">
+        <div>
+            <a href="#" onclick="$(this).playPauseYTP($('#bgndVideo'))">
+                <span id="btnPP" class="glyphicon glyphicon-pause"></span>
+            </a>
+            <a style="max-height: 100%" id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=zTDeEJyCmNA',containment:'#top',autoPlay:true, mute:false, startAt:0, opacity:1, showControls:false}">My video</a>
+            @*<a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=M3YblQUbq7o',containment:'#top',autoPlay:true, mute:false, startAt:0, opacity:1, showControls:false, optimizeDisplay:true, stopMovieOnBlur:true}">My video</a>*@
+        </div>
+    </section>
+    @*@using (Html.BeginForm("AddUser", "Api"))
+    {
+        <input type="submit" value="Post" />
+    };*@
+
+
+    @*<section class="module contentTop">
+        <div class="container">
+            <h2>Supermode</h2>
+            <p>Tell me why</p>
+        </div>
+    </section>*@
+
+    <section class="module parallax parallax-1">
+        <div class="container">
+            <h1>Welcome!</h1>
+            <p>This is a little project that i am building on my freetime.</p>
+        </div>
+    </section>
+
+
+    @*<section class="module content">
+        <div class="container">
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        </div>
+    </section>
+
+    <section class="module parallax parallax-2">
+        <div class="container">
+            <h1>Rise</h1>
+            <p>Cool Picture</p>
+        </div>
+    </section>*@
+
+    @*<section class="module content">
+        <div class="container">
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        </div>
+    </section>
+
+    <section class="module parallax parallax-3">
+        <div class="container">
+            <h1>Calm</h1>
+        </div>
+    </section>
+
+    <section class="module content">
+        <div class="container">
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        </div>
+    </section>
+    <section class="module parallax parallax-4">
+        <div class="container">
+            <h1>
+                This is me!
+            </h1>
+        </div>
+    </section>*@
+    <section class="module parallax">
+        <div class="container"></div>
+    </section>
+
+    <section class="module content">
+        <div class="container">
+           
+        </div>
+    </section>
+    <section class="module parallax parallax-5">
+        <div class="container">
+            <h1 data-bind="text: passwordText"></h1>
+            <div>
+                <div id="login">
+                    @using (Html.BeginForm("GetAccessLevel", "Start"))
+                    {
+
+                        @Html.TextBoxFor(x => x.Username, new { id = "txtUsername" })
+                        ;
+                        @Html.PasswordFor(x => x.Password, new { id = "txtPassword" })
+                        ;
+                        <Input Id="btnLogin" type="Submit" Value="Login" />
+                    }
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+    <section class="module content">
+        <div class="container">
+        </div>
+    </section>
+
+    
+</body>
+
+</html>
+
+
+
+<script>
+   
+    // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+    function AppViewModel() {
+        this.passwordText = "Password?";
+    }
+
+    // Activates knockout.js
+    ko.applyBindings(new AppViewModel());
+
+
+
+    $(function() {
+        $(".player").YTPlayer();
+    });
+
+    $.fn.playPauseYTP = function(YTP) {
+        if (YTP[0].state == 1) { //if the player is playing
+            YTP.pauseYTP();
+            document.getElementById("btnPP").className = "glyphicon glyphicon-play";
+        } else {
+            YTP.playYTP();
+            document.getElementById("btnPP").className = "glyphicon glyphicon-pause";
+        }
+    }
+
+    $(document).ready(function() {
+        var uwatermark = 'Username';
+        var pwatermark = 'Password';
+        $('#txtUsername').blur(function() {
+            if ($(this).val().length == 0)
+                $(this).val(uwatermark).addClass('watermark');
+        }).focus(function() {
+            if ($(this).val() == uwatermark)
+                $(this).val('').removeClass('watermark');
+        }).val(uwatermark).addClass('watermark');
+
+        $('#txtPassword').blur(function() {
+            if ($(this).val().length == 0)
+                $(this).val(pwatermark).addClass('watermark');
+        }).focus(function() {
+            if ($(this).val() == pwatermark)
+                $(this).val('').removeClass('watermark');
+        }).val(pwatermark).addClass('watermark');
+
+
+
+    });
+
+    var btnLogin = document.getElementById('btnLogin');
+    
+
+</script>
